@@ -55,7 +55,7 @@ namespace MicaForEveryone.Services
         private readonly FileSystemWatcher _fileSystemWatcher = new();
 
         private bool _isFileWatcherEnabled;
-        private string? _fileName;
+        private string _fileName = "MicaForEveryone.conf";
 
         public Win32ConfigFile(IConfigParser parser)
         {
@@ -73,10 +73,7 @@ namespace MicaForEveryone.Services
             set
             {
                 _isFileWatcherEnabled = value;
-                if (_fileName != null)
-                {
-                    _fileSystemWatcher.EnableRaisingEvents = value;
-                }
+                _fileSystemWatcher.EnableRaisingEvents = value;
             }
         }
 

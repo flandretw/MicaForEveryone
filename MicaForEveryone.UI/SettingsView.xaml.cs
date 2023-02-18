@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using MicaForEveryone.UI.Models;
 using Microsoft.UI.Xaml.Controls;
@@ -33,6 +34,7 @@ namespace MicaForEveryone.UI
             new Contributor("SaiyajinK", "https://github.com/SaiyajinK", "fr"),
             new Contributor("RTFTR", "https://github.com/RTFTR", "ko"),
             new Contributor("krlvm", "https://github.com/krlvm", "ru"),
+            new Contributor("Phyan", "https://github.com/Phyan", "ua"),
             new Contributor("FrzMtrsprt", "https://github.com/FrzMtrsprt", "zh-Hans"),
             new Contributor("Piteriuz", "https://github.com/Piteriuz", "pl"),
             new Contributor("Douglas Vianna", "https://github.com/dgsmiley18", "pt-br"),
@@ -51,24 +53,14 @@ namespace MicaForEveryone.UI
             MainSplitView.IsPaneOpen = !MainSplitView.IsPaneOpen;
         }
 
-        private void RulesAppBarButton_PointerEntered(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        private void AddRuleAppBarButton_OnLoaded(object sender, RoutedEventArgs e)
         {
-            AnimatedIcon.SetState((UIElement)sender, "PointerOver");
+            ToolTipService.SetToolTip((DependencyObject)sender, new ResourceLoader().GetString("AddRuleAppBarButton/Label"));
         }
 
-        private void RulesAppBarButton_PointerPressed(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        private void RemoveRuleAppBarButton_OnLoaded(object sender, RoutedEventArgs e)
         {
-            AnimatedIcon.SetState((UIElement)sender, "Pressed");
-        }
-
-        private void RulesAppBarButton_PointerReleased(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            AnimatedIcon.SetState((UIElement)sender, "Normal");
-        }
-
-        private void RulesAppBarButton_PointerExited(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            AnimatedIcon.SetState((UIElement)sender, "Normal");
+            ToolTipService.SetToolTip((DependencyObject)sender, new ResourceLoader().GetString("RemoveRuleAppBarButton/Label"));
         }
     }
 }
